@@ -1,0 +1,167 @@
+body {
+    background-image: url('images/background.png'); /* Change to your image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.banner {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner .background-label {
+    position: absolute;
+    background-image: url(images/backlogo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px; 
+    font-weight: bold;
+    color: rgba(116, 114, 255, 0.1); /* Light color for background effect */
+    z-index: 0; /* Ensure it's behind the can */
+}
+
+.background-label:hover {
+    z-index: 3;
+    transition: 0.7s;
+    animation: fadeInTwo 3s forwards;
+}
+
+/* Start of soda can code */
+.banner .product {
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    bottom: 170px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    /* Required hover time for change */
+    transition: 0.7s;
+    --left: 350px;
+    /* Keeps soda cans in same line */
+    display: flex;
+}
+
+.banner .product .soda::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3%;
+    background: rgb(65, 58, 58);
+    z-index: 1;
+}
+
+.banner .product .soda {
+    background: 
+    var(--url) var(--left) 0, 
+    url(sodacan.png);
+    background-size: auto 100%;
+    width: 280px;
+    /* Using aspect-ratio for appropriate display of image*/
+    aspect-ratio: 6 / 13;
+    background-blend-mode: multiply;
+    mask-image: url(sodacan.png);
+    mask-size: auto 100%;
+    transition: 0.7s;
+    /* Keeps both sodas stacked on each other */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) 
+}
+
+.banner .product:hover {
+    --left: -1000px;
+    transform: translateX(-50%) translateY(-120px);
+}
+
+.banner .product .soda:nth-child(2) {
+    /* hides second soda at default state */
+    opacity: 0;
+}
+
+.banner .product:hover .soda:nth-child(2) {
+    opacity: 1;
+}
+/* End of soda can code */
+
+.label {
+    position: absolute;
+    width: 200px;
+    padding: 20px;
+    background: url(images/cloud.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    animation: fadeIn 5s forwards;
+}
+
+.label.ingredients {
+    top: 20%;
+    left: 10%;
+    transform: translateY(-50%);
+}
+
+.label.audience {
+    top: calc(20% + 200px); /* Adjust to position below ingredients */
+    left: 10%;
+    transform: translateY(-50%);
+}
+
+.label.description {
+    top: 20%;
+    right: 10%;
+    transform: translateY(-50%);
+}
+
+.label.contact {
+    top: calc(20% + 265px); /* Adjust to position below description */
+    right: 10%;
+    transform: translateY(-50%);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInTwo {
+    from {
+        opacity: 0.5;
+        
+    }
+    to {
+        opacity: 1;
+        
+    }
+}
+
+/* Code for top left box */
+.top-left-box {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    color: #333; /* Text color */
+    font-size: 24px; /* Text size */
+    font-weight: bold; /* Bold text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    background: linear-gradient(to right, orange, rgb(102, 102, 255));
+}
